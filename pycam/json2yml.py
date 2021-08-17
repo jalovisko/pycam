@@ -27,6 +27,11 @@ def read_json(json_file_name: str) -> dict:
         return data
 
 def format_data(data: dict) -> dict:
+    """
+    Formats the imported data (dictionary) to another dictionary which is
+    closer to the YAML file format + fills the data gaps that are not present
+    in the initial JSON.
+    """
     # Filling the bounds data
     bounds_data = {'bounds': {
         'minimal': {
