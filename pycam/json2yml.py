@@ -20,7 +20,11 @@ from optparse import OptionParser
 
 def read_json(json_file_name: str) -> dict:
     """
-    Opens and reads a JSON file
+    Opens and reads a JSON file.
+
+    @param json_file_name (str): JSON file name, should look something like
+    file.json
+    @return: a dictionary of unprocessed data from the JSON
     """
     with open(json_file_name) as reader:
         data = json.load(reader)
@@ -31,6 +35,10 @@ def format_data(data: dict) -> dict:
     Formats the imported data (dictionary) to another dictionary which is
     closer to the YAML file format + fills the data gaps that are not present
     in the initial JSON.
+
+    @param data (dict): a dictionary of unprocessed data
+    @return: a dictionary of processed date formated closer to the YAML file
+    format
     """
     # Filling the bounds data
     bounds_data = {'bounds': {
@@ -246,7 +254,12 @@ def format_data(data: dict) -> dict:
 
 def write_to_yml(yml_file_name: str, dict_file: dict) -> None:
     """
-    Writes the formated data to the YAML file
+    Writes the formated data to the YAML file.
+
+    @param yml_file_name (str): YML file name, should look like file.yml or
+    file.yamlbcdbcd
+    @param dict_file (dict): a dictionary with data formated to be written in
+    YAML
     """
     with open(yml_file_name, 'w') as writer:
         documents = yaml.dump(dict_file, writer)
